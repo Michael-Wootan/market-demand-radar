@@ -1,0 +1,30 @@
+{
+  "countries": [
+    { "code": "us", "name": "United States",  "flag": "🇺🇸", "seeds": ["coffee beans", "espresso"], "minVol": 100 },
+    { "code": "uk", "name": "United Kingdom", "flag": "🇬🇧", "seeds": ["coffee beans", "espresso"], "minVol": 50 },
+    { "code": "de", "name": "Germany",        "flag": "🇩🇪", "seeds": ["kaffee", "espresso"],       "minVol": 50 },
+    { "code": "fr", "name": "France",         "flag": "🇫🇷", "seeds": ["café en grain", "espresso"], "minVol": 50 },
+    { "code": "nl", "name": "Netherlands",    "flag": "🇳🇱", "seeds": ["koffie", "espresso"],       "minVol": 30 },
+    { "code": "cz", "name": "Czechia",        "flag": "🇨🇿", "seeds": ["káva", "espresso"],         "minVol": 20 },
+    { "code": "es", "name": "Spain",          "flag": "🇪🇸", "seeds": ["café en grano", "espresso"], "minVol": 30 },
+    { "code": "it", "name": "Italy",          "flag": "🇮🇹", "seeds": ["caffè", "espresso"],        "minVol": 30 }
+  ],
+  "dropPatterns": [
+    "what is", "was ist", "how to", "wie ", "comment ", "como ", "come ",
+    "side effect", "nebenwirkung", "effet secondaire",
+    "wiki", "reddit", "youtube", "amazon",
+    "near me", "in der nähe", "v okolí",
+    "review", "erfahrung", "avis", "forum",
+    "recipe", "rezept", "recette", "receta", "ricetta"
+  ],
+  "productSignals": [
+    "beans", "bohnen", "grain", "grano", "grani", "bonen", "zrnková",
+    "ground", "gemahlen", "moulu", "molido", "macinato",
+    "capsule", "kapsel", "pod", "pads",
+    "decaf", "entkoffeiniert", "décaféiné", "descafeinado",
+    "organic", "bio", "single origin", "blend", "roast", "röstung",
+    "wholesale", "bulk", "großhandel", "grossiste", "mayorista", "ingrosso", "groothandel", "velkoobchod",
+    "subscription", "abo", "abonnement",
+    "1kg", "5kg", "kilo"
+  ]
+}

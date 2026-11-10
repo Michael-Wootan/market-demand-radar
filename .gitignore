@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+!.env.example
+data/
+config/markets.json
+*.log
+.DS_Store

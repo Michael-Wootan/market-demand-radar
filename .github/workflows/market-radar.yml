@@ -1,0 +1,50 @@
+name: Market Demand Radar
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'     # Monday 00:00 UTC
+  workflow_dispatch:
+    inputs:
+      unit_budget:
+        description: 'Ahrefs unit budget for this run'
+        required: false
+        default: '12000'
+
+jobs:
+  run:
+    # Scheduled runs are off until the repository variable ENABLE_SCHEDULE is 'true',
+    # so a fresh fork or an unconfigured copy never runs (or fails) on its own.
+    if: github.event_name == 'workflow_dispatch' || vars.ENABLE_SCHEDULE == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      # config/markets.json is gitignored; CI writes it from a repository variable
+      - name: Write market config
+        env:
+          MARKETS_JSON: ${{ vars.MARKETS_JSON }}
+        run: |
+          if [ -n "$MARKETS_JSON" ]; then printf '%s' "$MARKETS_JSON" > config/markets.json; fi
+
+      - name: Run demand scan
+        run: node src/market-radar.js
+        env:
+          AHREFS_API_TOKEN:  ${{ secrets.AHREFS_API_TOKEN }}
+          RADAR_UNIT_BUDGET: ${{ inputs.unit_budget || '12000' }}
+
+      - name: Upload radar output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-radar
+          path: data/market-radar.json
+          retention-days: 90
+          if-no-files-found: ignore

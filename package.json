@@ -1,0 +1,15 @@
+{
+  "name": "market-demand-radar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demand scan across countries: product-intent keywords scored by volume and difficulty, year-over-year growth and momentum from volume history, inside a hard API credit budget.",
+  "main": "src/market-radar.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "radar": "node src/market-radar.js",
+    "test": "node scripts/test-scoring.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}
